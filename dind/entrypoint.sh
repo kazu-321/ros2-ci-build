@@ -27,7 +27,7 @@ echo ''
 
 docker build \
   --build-arg ROS2_DISTRO="${ROS2_DISTRO}" \
-  -t ros2-ci:latest /ros2 || exit $?
+  -t ros2-ci-build:latest /ros2 || exit $?
 
 echo ''
 echo '======== Running the ROS 2 container ========'
@@ -43,4 +43,4 @@ docker run \
   --env POST_BUILD="${POST_BUILD}" \
   --env PRE_TEST="${PRE_TEST}" \
   --env POST_TEST="${POST_TEST}" \
-  --rm ros2-ci:latest || exit $?
+  ros2-ci-build:latest || exit $?

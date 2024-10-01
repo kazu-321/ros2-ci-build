@@ -1,6 +1,6 @@
 name: 'ROS 2 CI'
 description: 'Continuous integration for ROS 2 project'
-author: "ICHIRO ITS"
+author: "kazu-321"
 branding:
   icon: "activity"
   color: "gray-dark"
@@ -8,7 +8,7 @@ inputs:
   ros2-distro:
     description: "The ROS 2 distribution to be used."
     required: false
-    default: "foxy"
+    default: "humble"
   apt-packages:
     description: "APT packages to be installed as dependencies."
     required: false

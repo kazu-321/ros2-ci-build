@@ -1,4 +1,4 @@
-ARG ROS2_DISTRO=foxy
+ARG ROS2_DISTRO=humble
 
 FROM ros:${ROS2_DISTRO}
 

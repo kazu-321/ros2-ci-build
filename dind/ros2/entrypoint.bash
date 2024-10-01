@@ -105,35 +105,3 @@ then
   cd /ws/repo && echo "$POST_BUILD" && eval "$POST_BUILD" || exit $?
 fi
 
-if [ ! -z "$PRE_TEST" ]
-then
-  echo ''
-  echo '======== Running the pre-test command ========'
-  echo ''
-
-  cd /ws/repo && echo "$PRE_TEST" && eval "$PRE_TEST" || exit $?
-fi
-
-echo ''
-echo '======== Testing the workspace ========'
-echo ''
-
-cd /ws && colcon test \
-  --event-handlers console_cohesion+ \
-  --pytest-with-coverage \
-  --return-code-on-test-failure || exit $?
-
-mkdir /ws/repo/.ws \
-  && cp -r /ws/build /ws/repo/.ws \
-  && cp -r /ws/log /ws/repo/.ws \
-  && cp -r /ws/install /ws/repo/.ws \
-  || exit $?
-
-if [ ! -z "$POST_TEST" ]
-then
-  echo ''
-  echo '======== Running the post-test command ========'
-  echo ''
-
-  cd /ws/repo && echo "$POST_TEST" && eval "$POST_TEST" || exit $?
-fi
